@@ -13,4 +13,8 @@
 //     }
 // }
 
-export type x = {};
+export enum RESOURCE {
+    FOOD = 'FOOD',
+    WOOD = 'WOOD',
+    IRON = 'IRON',
+}

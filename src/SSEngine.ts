@@ -25,7 +25,7 @@ export namespace Engine {
 
     let camera: GameCamera =  new GameCamera({x: 0, y: 0});
 
-    let cameraSystem: CameraSystem =  new CameraSystem();
+    let cameraSystem: CameraSystem =  new CameraSystem({} as any, {} as any, {} as any, {} as any, {} as any);
 
 
     const ZOOM_SETTINGS = {
@@ -135,7 +135,7 @@ export namespace Engine {
         });
 
         mainApp.ticker.add(() => {
-            cameraSystem.handleCameraMovement(keys, camera, world, mainApp);
+            cameraSystem.handleCameraMovement();
         });
     };
 
@@ -145,7 +145,7 @@ export namespace Engine {
 
         const tileTextureMap = await loadAsset(AssetPaths.TILE_MAP_1, ConfigMap.TILE_MAP_1);
 
-        gameMap = new GameMap(world, buildMap(tileTextureMap, TILE_SIZE));
+        // gameMap = new GameMap(world, buildMap(tileTextureMap, TILE_SIZE));
 
         const buildTexture = await loadTexture(AssetPaths.TOOLBAR);
 
@@ -161,11 +161,6 @@ export namespace Engine {
 
         world.scale.set(0.3, 0.3);
 
-        // mainApp.stage.addChild(toolBar)
-    }
-
-    export const getMainApp = (): PIXI.Application => {
-        return mainApp;
     }
 
     export const initPlayers = () => {
@@ -176,12 +171,12 @@ export namespace Engine {
         mainApp.ticker.add(({deltaTime}  ) => {
             player.move(keys, deltaTime);
 
-            const nearbyTiles = getNearbyTiles(gameMap.getTiles(), player, 100);
+            // const nearbyTiles = getNearbyTiles(gameMap.getTiles(), player, 100);
 
-            if (nearbyTiles.length === 0) {
-                player.container.y += Math.floor(player.speed * deltaTime);
-                // console.log(player.container.y);
-            }
+            // if (nearbyTiles.length === 0) {
+            //     player.container.y += Math.floor(player.speed * deltaTime);
+            //     // console.log(player.container.y);
+            // }
             //
             // const collided = checkCollision(nearbyTiles, {x:player.x, y:player.y, size:TILE_SIZE});
             //

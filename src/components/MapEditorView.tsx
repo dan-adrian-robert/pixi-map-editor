@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import {Engine} from "../Engine";
-import {Box} from "@mui/material";
-import { initDevtools } from '@pixi/devtools';
+import {Box, Button} from "@mui/material";
+import {gameEngine} from "../App";
+import {loadAllTextures} from "../utils";
+import {initDevtools} from "@pixi/devtools";
 
 const pageStyle = {
     margin: 0,
@@ -15,18 +16,28 @@ const pageStyle = {
 }
 
 export const GameView = () => {
-    useEffect(() => {
+    useEffect( () => {
 
-        Engine.initMainApp().then((result) => {
-            initDevtools({
-                app: Engine.getMainApp(),
-            });
-            (window as any)['__PIXI_APP__'] = Engine.getMainApp();
-        });
+        loadAllTextures().then((textureList)=>{
+            gameEngine.initGameCanvas().then(() => {
+                document.getElementById('gameCanvas')?.appendChild(gameEngine.mainApp.canvas);
+                gameEngine.textureSystem.addTexture(textureList);
+                gameEngine.initSystems();
+
+                initDevtools({
+                    app: gameEngine.mainApp,
+                });
+
+                (window as any)['__PIXI_APP__'] = gameEngine.mainApp.stage;
+            })
+        })
     }, []);
 
     return (
         <Box sx={pageStyle}>
+            <Button onClick={()=> {
+                console.log(gameEngine.containerMap)
+            }} variant={'contained'}>LOG ALL</Button>
             <div id='gameCanvas'/>
         </Box>
     );

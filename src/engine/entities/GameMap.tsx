@@ -1,15 +1,18 @@
 import {Container, Sprite} from "pixi.js";
 
 export class GameMap {
-    mapContainer: Container;
+    mapContainer: Container | null;
     tileContainer: Container;
 
     tiles: Array<Sprite> = [];
 
-    constructor(mapContainer: Container, tiles: Array<Sprite>) {
-        this.mapContainer = mapContainer;
+    constructor() {
+        this.mapContainer = null;
         this.tileContainer = new Container();
         this.tileContainer.name ='tileContainer';
+    }
+
+    addTiles = (tiles: Array<Sprite>) => {
         this.tiles = tiles;
 
         this.tiles.forEach((tile, tileIndex) => {
@@ -21,11 +24,6 @@ export class GameMap {
             this.tileContainer.addChild(tile);
         })
 
-        this.mapContainer.addChild(this.tileContainer);
-
-    }
-
-    getTiles = () => {
-        return this.tiles;
+        this.mapContainer?.addChild(this.tileContainer);
     }
 }

@@ -10,7 +10,12 @@ export enum ASSET_NAMES {
     BUILD_UI = 'BUILD_UI',
     BACKGROUND = 'BACKGROUND',
     CLOUD = 'CLOUD',
-    TOOLBAR = 'TOOLBAR'
+    TOOLBAR = 'TOOLBAR',
+    MINE = 'MINE',
+    TOPBAR = 'TOPBAR',
+    BASE_BUILDINGS = 'BASE_BUILDINGS',
+    RESOURCES = 'RESOURCES',
+
 }
 
 export type SpriteSheetConfig = {
