@@ -42,7 +42,7 @@ export class BuildingSystem {
         mineSprite.texture = this.textureMap['goldMine'];
         mineSprite.setSize({width: 128, height: 128});
         mineSprite.position = {
-            x: 500,
+            x: 1000,
             y: 450,
         }
 
@@ -66,7 +66,7 @@ export class BuildingSystem {
         mineSprite.texture = this.textureMap['ironMine'];
         mineSprite.setSize({width: 128, height: 128});
         mineSprite.position = {
-            x: 700,
+            x: 800,
             y: 450,
         }
 
@@ -90,7 +90,7 @@ export class BuildingSystem {
         mineSprite.texture = this.textureMap['house'];
         mineSprite.setSize({width: 128, height: 128});
         mineSprite.position = {
-            x: 200,
+            x: 600,
             y: 450,
         }
 

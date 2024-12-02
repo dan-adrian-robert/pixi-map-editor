@@ -70,6 +70,11 @@ export const loadAllTextures = async ():Promise<Array<{name: string, texture: an
         '/assets/mobs/ogre.json',
     ]);
 
+    await Assets.load([
+        '/assets/portal/portal.png',
+        '/assets/portal/portal.json',
+    ]);
+
 
     return [
         {name: "bg", texture: bg},

@@ -1,30 +1,38 @@
 import {AnimatedSprite, Container, Texture} from "pixi.js";
 import * as PIXI from "pixi.js";
-import {CONTAINER_NAMES} from "../config";
 
 
 export class Enemy {
     container: Container;
     animations: Record<string, Array<Texture>>;
     characterSprite: AnimatedSprite;
+    speed: number;
+    hp: number;
 
-    constructor(source: string, animationState: string, containerMap:any, enemyList: Array<any>) {
+    constructor(
+        source: string,
+        animationState: string,
+        size: number,
+        animationSpeed: number,
+        x: number,
+        y: number,
+        speed: number,
+    ) {
         this.container = new Container();
+        this.container.position = {x,y}
 
         const config = PIXI.Assets.cache.get(source)
         this.animations = config.animations;
 
         this.characterSprite = new PIXI.AnimatedSprite(this.animations[animationState]);
-        this.characterSprite.setSize(48)
-        this.characterSprite.animationSpeed = 1 / 8;
-        this.characterSprite.position.set(100, 530);
+        this.characterSprite.setSize(size)
+        this.characterSprite.animationSpeed = animationSpeed;
+
         this.characterSprite.play();
 
-        this.container.addChild(this.characterSprite)
-
-
-        containerMap[CONTAINER_NAMES.ENEMIES].addChild(this.container);
-        enemyList.push(this);
+        this.container.addChild(this.characterSprite);
+        this.speed = speed;
+        this.hp = 5;
     }
 
     changeAnimationState(newState: string): void {
@@ -39,5 +47,9 @@ export class Enemy {
         } else {
             console.error(`Animation state "${newState}" not found!`);
         }
+    }
+
+    move(): void {
+        this.container.position.x += this.speed;
     }
 }

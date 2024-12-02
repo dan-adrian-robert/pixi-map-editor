@@ -13,6 +13,12 @@ import {UISystem} from "./systems/UISystem";
 import {RESOURCE} from "../types";
 import {ResourceSystem} from "./systems/ResourceSystem";
 import {EnemySystem} from "./systems/EnemySystem";
+import {TowerSystem} from "./systems/TowerSystem";
+import {Tower} from "./entities/Tower";
+import {Enemy} from "./entities/Enemy";
+import {Bullet} from "./entities/Bullet";
+import {Portal} from "./entities/Portal";
+import {PortalSystem} from "./systems/PortalSystem";
 
 export class GameEngine {
     mainApp: PIXI.Application;
@@ -24,7 +30,10 @@ export class GameEngine {
     buildingMap: Record<string, Building> = {};
     resourceMap: Record<RESOURCE, number> = {FOOD: 10, IRON: 20, WOOD: 155};
 
-    enemyList: Array<any> = []
+    enemyList: Array<Enemy> = [];
+    towerList: Array<Tower> = [];
+    bulletList: Array<Bullet> = [];
+    portalList: Array<Portal> = [];
 
     keySystem: KeySystem;
     containerSystem: ContainerSystem;
@@ -33,6 +42,8 @@ export class GameEngine {
     buildingSystem: BuildingSystem;
     resourceSystem: ResourceSystem;
     enemySystem: EnemySystem;
+    towerSystem: TowerSystem;
+    portalSystem: PortalSystem;
     uiSystem: UISystem;
 
 
@@ -56,8 +67,8 @@ export class GameEngine {
         this.uiSystem = new UISystem(this.containerMap, this.resourceMap, this.textureMap);
         this.resourceSystem = new ResourceSystem(this.resourceMap);
         this.enemySystem = new EnemySystem(this.mainApp, this.enemyList, this.containerMap)
-
-
+        this.towerSystem = new TowerSystem(this.mainApp, this.enemyList, this.towerList, this.bulletList, this.containerMap);
+        this.portalSystem = new PortalSystem(this.containerMap, this.mainApp, this.enemyList, this.portalList);
     }
 
     async initGameCanvas() {
@@ -74,11 +85,17 @@ export class GameEngine {
         this.uiSystem.init();
 
         this.enemySystem.init();
+        this.towerSystem.init();
+        this.portalSystem.init();
 
         this.mainApp.ticker.add(() => {
             this.cameraSystem.handleCameraMovement();
             this.uiSystem.updateResources();
             this.enemySystem.handleMovement()
+            this.towerSystem.handleShooting();
+            this.towerSystem.handleBulletMovement();
+            this.towerSystem.handleBulletCollision();
+            this.portalSystem.handleSpawnEnemy();
         })
     }
 
