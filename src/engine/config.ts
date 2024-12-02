@@ -16,11 +16,22 @@ export const WORLD_SETTINGS = {
     height: 756,
 }
 
-export const CONTAINER_NAMES = {
-    WORLD: 'WORLD',
-    UI: 'UI',
-    TOP_BAR: 'TOP_BAR',
-    IRON: 'IRON',
-    FOOD: 'FOOD',
-    WOOD: 'WOOD',
+export enum CONTAINER_NAMES {
+    WORLD = 'WORLD',
+    UI = 'UI',
+    TOP_BAR = 'TOP_BAR',
+    IRON = 'IRON',
+    FOOD = 'FOOD',
+    WOOD = 'WOOD',
+    ENEMIES = 'ENEMIES'
+}
+
+export const LAYERS: Record<CONTAINER_NAMES, number> = {
+    WORLD: 100,
+    UI: 200,
+    ENEMIES: 120,
+    FOOD: 110,
+    IRON: 110,
+    WOOD: 110,
+    TOP_BAR: 0,
 }

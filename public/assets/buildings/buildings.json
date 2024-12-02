@@ -1,0 +1,36 @@
+{"frames": {
+
+"gold_mine":
+{
+	"frame": {"x":0,"y":0,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+},
+"house":
+{
+	"frame": {"x":0,"y":256,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"iron_mine":
+{
+	"frame": {"x":256,"y":0,"w":256,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":256},
+	"sourceSize": {"w":256,"h":256}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "buildings.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":768},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b628b9860cf91e3ffdf86a360c05b691:ab948e38d626aa9192fe4d392707b5c5:8f670863a0ac9ac15291caba2801fd50$"
+}
+}

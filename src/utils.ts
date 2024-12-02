@@ -1,6 +1,6 @@
 
 import * as PIXI from 'pixi.js'
-import {Container, Sprite} from "pixi.js";
+import {Assets, Container, Sprite} from "pixi.js";
 import {loadAsset, loadTexture} from "./assetLoaders/loaders";
 import {AssetPaths, ConfigMap} from "./Images";
 
@@ -56,12 +56,20 @@ export const buildContainersStructure = (config: any, name: string) => {
 }
 
 export const loadAllTextures = async ():Promise<Array<{name: string, texture: any}>> => {
-   const bg =  await loadTexture(AssetPaths.BACKGROUND)
-   const mine =  await loadTexture(AssetPaths.MINE)
-   const topbar =  await loadTexture(AssetPaths.TOPBAR)
+    const bg =  await loadTexture(AssetPaths.BACKGROUND)
+    const mine =  await loadTexture(AssetPaths.MINE)
+    const topbar =  await loadTexture(AssetPaths.TOPBAR)
 
     const buildingTextures = await loadAsset(AssetPaths.BASE_BUILDINGS, ConfigMap.BASE_BUILDINGS);
     const resourceTextures = await loadAsset(AssetPaths.RESOURCES, ConfigMap.RESOURCES);
+
+    const ogre = await loadTexture(AssetPaths.OGRE)
+
+    await Assets.load([
+        '/assets/mobs/ogre.png',
+        '/assets/mobs/ogre.json',
+    ]);
+
 
     return [
         {name: "bg", texture: bg},
@@ -74,6 +82,7 @@ export const loadAllTextures = async ():Promise<Array<{name: string, texture: an
         {name:"ironIcon", texture: resourceTextures[2]},
         {name:"goldIcon", texture: resourceTextures[1]},
         {name:"woodIcon", texture: resourceTextures[3]},
+        {name:"ogre", texture: ogre},
     ];
 }
 

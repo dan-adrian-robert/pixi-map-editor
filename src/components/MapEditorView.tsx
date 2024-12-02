@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {Box, Button} from "@mui/material";
+import {Box, Button, MenuItem, Select} from "@mui/material";
 import {gameEngine} from "../App";
 import {loadAllTextures} from "../utils";
 import {initDevtools} from "@pixi/devtools";
@@ -15,9 +15,12 @@ const pageStyle = {
     'justify-content':'center',
 }
 
-export const GameView = () => {
-    useEffect( () => {
+const states = ['ogre_idle', 'atac1', 'death', 'walk', 'atac2/tile', 'atac3/a', 'walk_2']
 
+export const GameView = () => {
+    const [animationState, setAnimationState] = React.useState<string>(states[0])
+
+    useEffect( () => {
         loadAllTextures().then((textureList)=>{
             gameEngine.initGameCanvas().then(() => {
                 document.getElementById('gameCanvas')?.appendChild(gameEngine.mainApp.canvas);
@@ -33,11 +36,36 @@ export const GameView = () => {
         })
     }, []);
 
+    const handleStateChange = (event: any) => {
+        setAnimationState(event.target.value)
+        gameEngine.handleStateChange(event.target.value)
+    }
+
     return (
         <Box sx={pageStyle}>
-            <Button onClick={()=> {
-                console.log(gameEngine.containerMap)
-            }} variant={'contained'}>LOG ALL</Button>
+            <Box display={'flex'} flexDirection={'row'} gap={'1em'} alignItems={'center'}>
+                <Box>
+                    <Button onClick={()=> {
+                        console.log(gameEngine.containerMap)
+                    }} variant={'contained'}>LOG ALL</Button>
+
+                </Box>
+                <Box>
+                    <Select
+                        labelId="demo-simple-select-standard-label"
+                        id="demo-simple-select-standard"
+                        value={animationState}
+                        onChange={(event)=> {
+                            handleStateChange(event)
+                        }}
+                        label="EnemyState"
+                    >
+                        {states.map((item)=> {
+                            return  <MenuItem value={item}>{item}</MenuItem>
+                        })}
+                    </Select>
+                </Box>
+            </Box>
             <div id='gameCanvas'/>
         </Box>
     );

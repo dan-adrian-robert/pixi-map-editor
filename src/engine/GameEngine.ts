@@ -12,6 +12,7 @@ import {BuildingSystem} from "./systems/BuildingSystem";
 import {UISystem} from "./systems/UISystem";
 import {RESOURCE} from "../types";
 import {ResourceSystem} from "./systems/ResourceSystem";
+import {EnemySystem} from "./systems/EnemySystem";
 
 export class GameEngine {
     mainApp: PIXI.Application;
@@ -23,12 +24,15 @@ export class GameEngine {
     buildingMap: Record<string, Building> = {};
     resourceMap: Record<RESOURCE, number> = {FOOD: 10, IRON: 20, WOOD: 155};
 
+    enemyList: Array<any> = []
+
     keySystem: KeySystem;
     containerSystem: ContainerSystem;
     cameraSystem: CameraSystem;
     textureSystem: TextureSystem;
     buildingSystem: BuildingSystem;
     resourceSystem: ResourceSystem;
+    enemySystem: EnemySystem;
     uiSystem: UISystem;
 
 
@@ -51,6 +55,9 @@ export class GameEngine {
         )
         this.uiSystem = new UISystem(this.containerMap, this.resourceMap, this.textureMap);
         this.resourceSystem = new ResourceSystem(this.resourceMap);
+        this.enemySystem = new EnemySystem(this.mainApp, this.enemyList, this.containerMap)
+
+
     }
 
     async initGameCanvas() {
@@ -66,9 +73,16 @@ export class GameEngine {
         this.buildingSystem.init();
         this.uiSystem.init();
 
-        this.mainApp.ticker.add(()=> {
+        this.enemySystem.init();
+
+        this.mainApp.ticker.add(() => {
             this.cameraSystem.handleCameraMovement();
             this.uiSystem.updateResources();
+            this.enemySystem.handleMovement()
         })
+    }
+
+    handleStateChange(state: string) {
+        this.enemyList.forEach(e => {e.changeAnimationState(state)});
     }
 }

@@ -1,0 +1,112 @@
+{
+  "frame": {},
+  "animation": {},
+  "meta": {},
+  "sprites": [
+    {
+      "name": "cloud_1",
+      "x": 0,
+      "y": 0,
+      "width": 30,
+      "height": 20
+    },
+    {
+      "name": "cloud_2",
+      "x": 35,
+      "y": 0,
+      "width": 45,
+      "height": 25
+    },
+    {
+      "name": "cloud_3",
+      "x": 85,
+      "y": 0,
+      "width": 50,
+      "height": 30
+    },
+    {
+      "name": "cloud_4",
+      "x": 140,
+      "y": 0,
+      "width": 55,
+      "height": 28
+    },
+    {
+      "name": "cloud_5",
+      "x": 200,
+      "y": 0,
+      "width": 40,
+      "height": 20
+    },
+    {
+      "name": "cloud_6",
+      "x": 0,
+      "y": 35,
+      "width": 48,
+      "height": 25
+    },
+    {
+      "name": "cloud_7",
+      "x": 53,
+      "y": 35,
+      "width": 60,
+      "height": 30
+    },
+    {
+      "name": "cloud_8",
+      "x": 120,
+      "y": 35,
+      "width": 65,
+      "height": 35
+    },
+    {
+      "name": "cloud_9",
+      "x": 190,
+      "y": 35,
+      "width": 43,
+      "height": 25
+    },
+    {
+      "name": "cloud_10",
+      "x": 240,
+      "y": 35,
+      "width": 38,
+      "height": 23
+    },
+    {
+      "name": "cloud_11",
+      "x": 0,
+      "y": 70,
+      "width": 55,
+      "height": 28
+    },
+    {
+      "name": "cloud_12",
+      "x": 60,
+      "y": 70,
+      "width": 53,
+      "height": 30
+    },
+    {
+      "name": "cloud_13",
+      "x": 120,
+      "y": 70,
+      "width": 50,
+      "height": 27
+    },
+    {
+      "name": "cloud_14",
+      "x": 180,
+      "y": 70,
+      "width": 45,
+      "height": 24
+    },
+    {
+      "name": "cloud_15",
+      "x": 235,
+      "y": 70,
+      "width": 38,
+      "height": 22
+    }
+  ]
+}

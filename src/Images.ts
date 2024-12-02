@@ -4,7 +4,7 @@ export const AssetPaths : ImageMap = {
     [ASSET_NAMES.TILE_MAP]: require('./assets/tiles/tiles.png'),
     [ASSET_NAMES.TILE_MAP_1]: require('./assets/tiles/tiles_1.png'),
     [ASSET_NAMES.UI]: require('./assets/tiles/ui.png'),
-    [ASSET_NAMES.OGRE]: require('./assets/mobs/ogre.png'),
+    [ASSET_NAMES.OGRE]: require(`./assets/mobs/ogre.png`),
     [ASSET_NAMES.TOWERS]: require('./assets/towers/towers.png'),
     [ASSET_NAMES.BUILD_UI]: require('./assets/tiles/buildUI.png'),
     [ASSET_NAMES.BACKGROUND]: require('./assets/background/background2.png'),

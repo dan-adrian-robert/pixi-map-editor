@@ -1,6 +1,6 @@
 import {Building} from "../entities/Building";
 import {Container, Sprite, Texture} from "pixi.js";
-import {CONTAINER_NAMES, WORLD_SETTINGS} from "../config";
+import {CONTAINER_NAMES, LAYERS} from "../config";
 import * as PIXI from "pixi.js";
 import {RESOURCE} from "../../types";
 import {shrinkAnimation} from "../../utils";
@@ -49,7 +49,7 @@ export class BuildingSystem {
         const container = new Container();
         container.name = 'goldMine'
         container.addChild(mineSprite);
-        container.zIndex = 200;
+        container.zIndex = LAYERS.IRON;
         container.interactive = true;
         container.onclick = () => {
             this.resourceMap[RESOURCE.WOOD] += 1;
@@ -73,7 +73,7 @@ export class BuildingSystem {
         const container = new Container();
         container.name = 'ironMine'
         container.addChild(mineSprite);
-        container.zIndex = 200;
+        container.zIndex = LAYERS.IRON;
         container.interactive = true;
         container.onclick = () => {
             this.resourceMap[RESOURCE.IRON] += 1;
@@ -97,9 +97,8 @@ export class BuildingSystem {
         const container = new Container();
         container.name = 'house'
         container.addChild(mineSprite);
-        container.zIndex = 200;
+        container.zIndex = LAYERS.IRON;
         container.interactive = true;
-
 
         this.containerMap[CONTAINER_NAMES.WORLD].addChild(container);
 
