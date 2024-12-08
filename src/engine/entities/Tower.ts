@@ -1,4 +1,5 @@
-import { Container, Graphics} from "pixi.js";
+import {Container, Sprite} from "pixi.js";
+import * as PIXI from "pixi.js";
 
 
 export class Tower {
@@ -6,24 +7,29 @@ export class Tower {
     attackSpeed: number;
     attackTickMax: number;
     tick: number;
+    sprite: Sprite;
+    animations: any;
 
     constructor(
+        source: string,
         x: number,
         y: number,
         speed: number,
     ) {
         this.container = new Container();
         this.container.name = "tower_";
-
-        const square = new Graphics();
-        square.beginFill(0xff0000); // red color
-        square.drawRect(0 ,0, 50, 50); // x, y, width, height
-        square.endFill();
         this.container.position = {x,y}
 
-        this.container.addChild(square);
+        const config = PIXI.Assets.cache.get(source)
+
+        this.animations = config.animations;
+
+        this.sprite = new PIXI.AnimatedSprite(this.animations['tower']);
+        this.sprite.setSize({height: 256, width: 120});
+
+        this.container.addChild(this.sprite);
         this.attackSpeed = speed;
-        this.attackTickMax = 25;
+        this.attackTickMax = 15;
         this.tick = 0;
 
 

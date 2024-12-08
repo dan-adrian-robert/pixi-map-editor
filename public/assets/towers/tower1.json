@@ -1,0 +1,47 @@
+{"frames": {
+
+"tower00":
+{
+	"frame": {"x":0,"y":0,"w":80,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":140},
+	"sourceSize": {"w":80,"h":140}
+},
+"tower01":
+{
+	"frame": {"x":0,"y":140,"w":80,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":140},
+	"sourceSize": {"w":80,"h":140}
+},
+"tower02":
+{
+	"frame": {"x":0,"y":280,"w":80,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":140},
+	"sourceSize": {"w":80,"h":140}
+},
+"tower03":
+{
+	"frame": {"x":0,"y":420,"w":80,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":140},
+	"sourceSize": {"w":80,"h":140}
+}},
+"animations": {
+	"tower": ["tower00","tower01","tower02","tower03"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "tower1.png",
+	"format": "RGBA8888",
+	"size": {"w":80,"h":560},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a1648644cfb82ee7a8b5e3e62e08720a:efe76402dccc4045dd3a7e065b43c011:61ba477405b402aa3a1e2d0616b55a7e$"
+}
+}

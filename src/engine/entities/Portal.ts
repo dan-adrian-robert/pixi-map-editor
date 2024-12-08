@@ -1,5 +1,6 @@
 import { Container } from "pixi.js";
 import * as PIXI from "pixi.js";
+import {DIRECTION} from "../../types";
 
 export class Portal {
     container: Container;
@@ -9,6 +10,7 @@ export class Portal {
 
     animations: Record<string, any>;
     sprite: any;
+    direction: DIRECTION;
 
     constructor(
         x: number,
@@ -17,6 +19,7 @@ export class Portal {
         spawnTick: number,
         spawnMaxTick: number,
         source: string,
+        direction: DIRECTION,
     ) {
         this.container = new Container();
         this.container.name ='portal';
@@ -24,6 +27,7 @@ export class Portal {
         this.spawnSpeed = spawnSpeed;
         this.spawnTick = spawnTick;
         this.spawnMaxTick = spawnMaxTick;
+        this.direction = direction;
 
 
         this.container.position = {
@@ -42,8 +46,6 @@ export class Portal {
         this.sprite.play();
 
         this.container.addChild(this.sprite);
-
-        console.log('config', config);
     }
 
 }

@@ -27,7 +27,12 @@ export class TowerSystem {
     }
 
     init () {
-        const tower: Tower = new Tower(300, 350, 5);
+        const tower: Tower = new Tower(
+            '/assets/towers/tower1.json',
+            300,
+            320,
+            5
+        );
 
         this.towerList.push(tower);
         this.containerMap[CONTAINER_NAMES.ENEMIES].addChild(tower.container);
@@ -42,10 +47,16 @@ export class TowerSystem {
 
                 const position = tower.container.position;
 
+                const px = position.x + 32;
+                const py = position.y + 64;
+
                 const enemy = this.enemyList[0];
 
                 if(enemy) {
-                    const bullet = new Bullet(position.x, position.y, 15, enemy.container.position)
+                    const bullet = new Bullet(
+                        '/assets/projectiles/projectiles.json',
+                        px, py, 15, enemy.container.position
+                    )
 
                     this.containerMap[CONTAINER_NAMES.ENEMIES].addChild(bullet.container);
                     this.bulletList.push(bullet);
@@ -65,6 +76,7 @@ export class TowerSystem {
             const stepY = (dy / distance) * bullet.attackSpeed;
             bullet.container.x += stepX;
             bullet.container.y += stepY;
+
         })
     }
 

@@ -75,6 +75,15 @@ export const loadAllTextures = async ():Promise<Array<{name: string, texture: an
         '/assets/portal/portal.json',
     ]);
 
+    await Assets.load([
+        '/assets/towers/tower1.png',
+        '/assets/towers/tower1.json',
+    ]);
+
+    await Assets.load([
+        '/assets/projectiles/projectiles.png',
+        '/assets/projectiles/projectiles.json',
+    ]);
 
     return [
         {name: "bg", texture: bg},

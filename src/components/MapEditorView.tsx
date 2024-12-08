@@ -12,7 +12,7 @@ const pageStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    'justify-content':'center',
+    justifyContent:'center',
 }
 
 const states = ['ogre_idle', 'atac1', 'death', 'walk', 'atac2/tile', 'atac3/a', 'walk_2']
@@ -60,8 +60,8 @@ export const GameView = () => {
                         }}
                         label="EnemyState"
                     >
-                        {states.map((item)=> {
-                            return  <MenuItem value={item}>{item}</MenuItem>
+                        {states.map((item, index)=> {
+                            return  <MenuItem value={item} key={index}>{item}</MenuItem>
                         })}
                     </Select>
                 </Box>
