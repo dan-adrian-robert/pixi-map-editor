@@ -42,14 +42,26 @@ export class ContainerSystem {
         enemyContainer.zIndex = LAYERS.ENEMIES;
         world.addChild(enemyContainer)
 
+        const buildingContainer = new Container();
+        buildingContainer.name = CONTAINER_NAMES.BUILD_UI;
+        buildingContainer.zIndex = LAYERS.BUILD_UI;
+
+        const buildContainerSprite = new Sprite();
+        buildContainerSprite.name = CONTAINER_NAMES.BUILD_UI;
+        buildContainerSprite.texture = this.textureMap["topbar"];
+        buildContainerSprite.setSize({width: 1024, height: 128});
+        buildContainerSprite.position.y = WORLD_SETTINGS.height - 128;
+        buildingContainer.addChild(buildContainerSprite);
 
         this.mainApp.stage.addChild(world);
         this.mainApp.stage.addChild(UIContainer);
+        this.mainApp.stage.addChild(buildingContainer);
 
         this.addContainer(world, CONTAINER_NAMES.WORLD);
         this.addContainer(UIContainer, CONTAINER_NAMES.UI);
         this.addContainer(toolbarSprite, CONTAINER_NAMES.TOP_BAR);
         this.addContainer(enemyContainer, CONTAINER_NAMES.ENEMIES);
+        this.addContainer(buildContainerSprite, CONTAINER_NAMES.BUILD_UI);
     }
 
     addContainer = (container: Container, name: string) => {

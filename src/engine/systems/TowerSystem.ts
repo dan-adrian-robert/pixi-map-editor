@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import { Container } from "pixi.js";
 import {Enemy} from "../entities/Enemy";
 import {Tower} from "../entities/Tower";
-import {CONTAINER_NAMES} from "../config";
+import {CONTAINER_NAMES, TOWER_CONFIG} from "../config";
 import {Bullet} from "../entities/Bullet";
 
 export class TowerSystem {
@@ -27,15 +27,14 @@ export class TowerSystem {
     }
 
     init () {
-        const tower: Tower = new Tower(
-            '/assets/towers/tower1.json',
-            300,
-            320,
-            5
-        );
+        TOWER_CONFIG.forEach((config) => {
+            const {source,x,y,speed} = config;
+            const tower: Tower = new Tower(source, x, y, speed);
 
-        this.towerList.push(tower);
-        this.containerMap[CONTAINER_NAMES.ENEMIES].addChild(tower.container);
+            this.towerList.push(tower);
+            this.containerMap[CONTAINER_NAMES.ENEMIES].addChild(tower.container);
+        })
+
     }
 
     handleShooting() {
