@@ -118,42 +118,54 @@ export const BUILDING_TYPES = [
                 y: 0,
             },
             zIndex:201,
+        },
+        metadata:{
+            type: 'goldMine',
+            cost: 100,
         }
     },
     {
         sprite: {
             width : 96,
             height : 96,
-            name: 'goldMineBuildingSprite',
+            name: 'ironMineBuildingSprite',
             textureName: 'ironMine',
         },
         container: {
             width : 96,
             height : 96,
-            name: 'goldMineBuildingContainer',
+            name: 'ironMineBuildingContainer',
             position: {
                 x: 135,
                 y: 0,
             },
             zIndex:201,
+        },
+        metadata:{
+            type: 'ironMine',
+            cost: 80,
         }
     },
     {
         sprite: {
             width : 86,
             height : 75,
-            name: 'goldMineBuildingSprite',
+            name: 'foodBuildingSprite',
             textureName: 'house',
         },
         container: {
             width : 86,
             height : 75,
-            name: 'goldMineBuildingContainer',
+            name: 'foodBuildingContainer',
             position: {
                 x: 235,
                 y: 25,
             },
             zIndex:201,
+        },
+        metadata:{
+            type: 'house',
+            cost: 60,
         }
     }
 ]

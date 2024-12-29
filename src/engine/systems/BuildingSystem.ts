@@ -49,7 +49,7 @@ export class BuildingSystem {
 
             container.addChild(mineSprite);
             container.onclick = () => {
-                this.selectBuilding(mineSprite)
+                this.selectBuilding(mineSprite, config.metadata)
             }
 
             this.containerMap[CONTAINER_NAMES.BUILD_UI].addChild(container);
@@ -83,7 +83,10 @@ export class BuildingSystem {
         return true;
     }
 
-    selectBuilding(building: Sprite) {
+    selectBuilding(building: Sprite, metadata: any) {
+
+        const {type} = metadata;
+
         const blueprintContainer = new Container();
 
         const graphics = new PIXI.Graphics();
@@ -107,7 +110,7 @@ export class BuildingSystem {
 
         this.selectedBuilding = {
             container: blueprintContainer,
-            type: 'rahan',
+            type,
         }
 
         this.containerMap[CONTAINER_NAMES.WORLD].addChild(blueprintContainer);
@@ -135,12 +138,19 @@ export class BuildingSystem {
             }
         }
 
-        const handlePlaceBuild = () => {
+        const handlePlaceBuild = (event: any) => {
+            const { x, y } = event.data.global;
+            const canBePlaced = this.canBuildingBePlaced(x, y, 100, this.buildingMap);
+            console.log(canBePlaced, x, y, this.buildingMap)
+
+            if (canBePlaced) {
+                console.log('place it plz')
+            }
             const spriteConfig = {
                 width: 128,
                 height: 128,
-                name: 'goldMineSprite',
-                textureName: 'goldMine',
+                name: `${type}Sprite`,
+                textureName: type,
                 size: {width: 128, height: 128},
 
             }
@@ -156,7 +166,10 @@ export class BuildingSystem {
                 this.resourceMap[RESOURCE.WOOD] += 1;
             }
 
+            const newBuilding = new Building(container);
+
             this.containerMap[CONTAINER_NAMES.WORLD].addChild(container);
+            this.buildingMap[`${x}_${y}`] = newBuilding;
 
             this.containerMap[CONTAINER_NAMES.WORLD].off('pointerdown',handlePlaceBuild)
             this.containerMap[CONTAINER_NAMES.WORLD].off('pointermove',handleBuildingMovement)
